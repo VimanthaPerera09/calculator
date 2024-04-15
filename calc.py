@@ -16,7 +16,12 @@ class Calculator:
 
 
     def divide(self, x, y):
-        return x / y
+        #Modifying in branch y for intentinal conflicts
+        if y == 0:
+            return "Cannot divide by zero"
+        else:
+            result  = x/y
+            return result
 
 if __name__ == "__main__":
     calc = Calculator()
