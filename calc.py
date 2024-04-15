@@ -14,7 +14,7 @@ class Calculator:
     def divide(self, x, y):
         #Modifying in branch y for intentinal conflicts
         if y == 0:
-            return "Cannot divide by zero"
+            raise ValueError("Cannot Divide by zero")
         else:
             result  = x/y
             return result
