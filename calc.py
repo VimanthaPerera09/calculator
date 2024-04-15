@@ -3,10 +3,14 @@ class Calculator:
         pass
 
     def add(self, x, y):
-        return x + y
+        #modifying for intentional conflicts in branch z
+        result = x + y
+        return result
 
     def subtract(self, x, y):
-        return x - y
+        #Modifying for intentional conflicts in branch z
+        result = x - y
+        return result
 
     def multiply(self, x, y):
         return x * y
