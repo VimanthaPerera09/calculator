@@ -9,7 +9,11 @@ class Calculator:
         return x - y
 
     def multiply(self, x, y):
-        return x * y
+        # Inside calculator.py (feature-x branch)
+        # Modifying lines to create conflicts
+        result = x * y
+        return result
+
 
     def divide(self, x, y):
         return x / y
