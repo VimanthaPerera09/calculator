@@ -24,22 +24,22 @@ project/
 git clone https://github.com/VimanthaPerera09/calculator.git
 cd calculator
 ```
-# Install Dependencies
+## Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-# Run Unit Tests
+## Run Unit Tests
 ```bash
 python test_calc.py
 ```
-# Build and Install Package the Application
+## Build and Install Package the Application
 ```bash
 python build.py
 #answer the menu
 ```
 
-# Execute the Calculator
+## Execute the Calculator
 ```bash
 cd dist #Navigate to dist directory through if youre using GUI
 calculator.exe
