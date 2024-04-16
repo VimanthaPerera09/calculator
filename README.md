@@ -2,13 +2,14 @@
 Assignemnt02 - DOT503
 
 ## File Structure
+```bash
 project/
 ├── calc.py # Main calculator module
 ├── test_calc.py # Unit tests for the calculator module
 ├── build.py # Script for compiling, testing, and packaging
 ├── requirements.txt # List of project dependencies
 └── README.md # Project documentation (you are here!!! :p)
-
+```
 
 ## Installation and Usage
 
@@ -35,6 +36,7 @@ python test_calc.py
 # Build and Install Package the Application
 ```bash
 python build.py
+#answer the menu
 ```
 
 # Execute the Calculator
