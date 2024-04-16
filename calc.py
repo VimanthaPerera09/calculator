@@ -27,11 +27,59 @@ class Calculator:
             result  = x/y
             return result
 
-if __name__ == "__main__":
+def main():
     calc = Calculator()
 
-    print("Add:", calc.add(10, 5))         
-    print("Subtraction:", calc.subtract(10, 5))  
-    print("Multiplication:", calc.multiply(10, 5))  
-    print("Division:", calc.divide(10, 5))       
-    print("Division:", calc.divide(10, 0))      
+    while True:
+        # Prompt user for operation
+        print("\nAvailable operations:")
+        print("1. Add (+)")
+        print("2. Subtract (-)")
+        print("3. Multiply (*)")
+        print("4. Divide (/)")
+        print("5. Exit")
+
+        choice = input("Enter your choice (1-5): ")
+
+        # Performing chosen operation or exit
+        if choice == "5":
+            print("Exiting...")
+            break
+
+        if choice not in ["1", "2", "3", "4"]:
+            print("Invalid choice. Please enter a valid option (1-5).")
+            continue
+
+        # Prompt user for numbers
+        try:
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+            continue
+
+        # Performing the selected operation
+        if choice == "1":
+            result = calc.add(num1, num2)
+            operation = "Addition"
+        elif choice == "2":
+            result = calc.subtract(num1, num2)
+            operation = "Subtraction"
+        elif choice == "3":
+            result = calc.multiply(num1, num2)
+            operation = "Multiplication"
+        elif choice == "4":
+            try:
+                result = calc.divide(num1, num2)
+                operation = "Division"
+            except ValueError as e:
+                print(f"Error: {e}")
+                continue
+
+        # Displaying the result
+        print(f"Result of {operation}: {result}")
+
+    print("Goodbye!")
+
+if __name__ == "__main__":
+    main()
