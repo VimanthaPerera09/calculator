@@ -1,5 +1,5 @@
-# calculator
-Assignemnt02 - DOT503
+# Calculator
+## Assignment02 - DOT503
 
 ## File Structure
 ```bash
