@@ -13,7 +13,7 @@ pipeline {
         stage("Test"){
             steps {
             //Running the unit tests
-            sh 'python -m unittest test_calc.py'\
+            bat 'python -m unittest test_calc.py'\
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
             // Building the Docker image
                 script {
                     docker.build('calc-build-image') {
-                        sh 'pyinstaller --onefile calc.py'
+                        bat 'pyinstaller --onefile calc.py'
                     }
                 }
                 /*// Pushing the Docker image to a registry
