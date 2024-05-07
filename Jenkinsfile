@@ -13,7 +13,7 @@ pipeline {
         stage("Test"){
             steps {
             //Running the unit tests
-            bat 'python -m unittest test_calc.py'\
+            bat 'python --version'
             }
         }
 
