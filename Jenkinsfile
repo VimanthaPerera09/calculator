@@ -14,7 +14,7 @@ pipeline {
             steps {
             //Running the unit tests
             bat '''python --version
-            python -m unittest test_calc.py
+            echo 2 "&" n | python build.py
             '''
             }
         }
