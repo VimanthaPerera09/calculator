@@ -35,7 +35,7 @@ pipeline {
                         // Using Docker command to build the image
                         bat 'docker build -t my-calc-image .'
                         }
-
+                }
                 /*// Pushing the Docker image to a registry
                 script {
                     docker.withRegistry('https://docker.registry.com', 'my-docker-credentials') {
