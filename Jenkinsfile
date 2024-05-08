@@ -13,7 +13,7 @@ pipeline {
         stage("Test"){
             steps {
             //Running the unit tests
-            bat '''python --version
+            bat '''
             echo 2 "&" n | python build.py
             '''
             }
