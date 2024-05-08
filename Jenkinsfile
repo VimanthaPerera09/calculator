@@ -2,18 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('compile_build') {
-            steps {
+        stage("Initialize") {
+            steps{
                 bat'''
-                    pip install -r requirements.txt
-                ''' 
+                pip install -r requirements.txt
+                '''
             }
         }
 
         stage("Test"){
             steps {
             //Running the unit tests
-            bat 'python --version'
+            bat '''python --version
+            python -m unittest test_calc.py
+            '''
+            }
+        }
+
+        stage('compile_build') {
+            steps {
+                bat'''
+                echo 4 "&" n | python build.py
+                ''' 
             }
         }
 
