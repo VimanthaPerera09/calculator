@@ -21,10 +21,11 @@ pipeline {
             steps{
             // Building the Docker image
                 script {
-                    docker.build('calc-build-image') {
-                        bat 'pyinstaller --onefile calc.py'
-                    }
-                }
+                    script {
+                        // Using Docker command to build the image
+                        bat 'docker build -t my-calc-image .'
+                        }
+
                 /*// Pushing the Docker image to a registry
                 script {
                     docker.withRegistry('https://docker.registry.com', 'my-docker-credentials') {
