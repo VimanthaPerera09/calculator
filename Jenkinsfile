@@ -13,8 +13,8 @@ pipeline {
         stage("Test"){
             steps {
             //Running the unit tests
-            bat '''
-            echo 2 "&" n | python build.py
+            bat '''python --version
+            python .\build.py --jenkins --compile_test --clean --build_executable
             '''
             }
         }
@@ -22,7 +22,7 @@ pipeline {
         stage('compile_build') {
             steps {
                 bat'''
-                echo 4 "&" n | python build.py
+                python .\build.py --jenkins --clean --build_executable
                 ''' 
             }
         }
