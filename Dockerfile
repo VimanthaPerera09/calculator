@@ -7,3 +7,4 @@ COPY . /calculator/source_code
 #RUN mv /calculator/source_code/build /calculator/app/.
 #RUN mv /calculator/source_code/dist /calculator/app/.
 ENTRYPOINT ["echo", "Welcome to Vs Calculator\n @Vimantha Perera - All rights reserved ©"]
+CMD ["/bin/bash"]
