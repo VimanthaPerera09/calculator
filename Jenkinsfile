@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Initialize") {
             steps{
-                bat'''
+                bat '''
                 pip install -r requirements.txt
                 '''
             }
@@ -34,6 +34,7 @@ pipeline {
                     script {
                         // Using Docker command to build the image
                         bat 'docker build -t my-calc-image .'
+                        bat 'docker ps -a'
                         }
                 }
                 /*// Pushing the Docker image to a registry
