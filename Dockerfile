@@ -1,16 +1,10 @@
-FROM node:18-alpine
+FROM python:3.12
 WORKDIR /calculator
 RUN mkdir /calculator/app
 RUN mkdir /calculator/source_code
-COPY build /calculator/app/.
-COPY dist /calculator/app/.
-COPY args.py /calculator/source_code/.
-COPY build.py /calculator/source_code/.
-COPY calc.py /calculator/source_code/.
-COPY test _calc.py /calculator/source_code/.
-COPY Jenkinsfile /calculator/source_code/.
-COPY requirements.txt /calculator/source_code/.
-COPY README.md /calculator/source_code/.
-COPY Dockerfile /calculator/source_code/.
-
+COPY . /calculator/source_code
+RUN cd /calculator/source_code
+RUN python build.py --jenkins --clean --build_executable
+RUN mv /calculator/source_code/build /calculator/app/.
+RUN mv /calculator/source_code/dist /calculator/app/.
 CMD ["ls", "-la"]
