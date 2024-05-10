@@ -44,3 +44,27 @@ python build.py
 cd dist #Navigate to dist directory through if youre using GUI
 calculator.exe
 ```
+
+## Run docker image from jenkins
+After giving the image name for the docker image in pipeline and after the run is completed,
+use the following commands to run the container and program
+
+### Run in interactive mode
+```bash
+docker run -it <image_name>
+```
+
+### Login to the container and run
+```bash
+#Run container in background
+docker run -d -t <image_name>
+
+#get the output of the above command which is the container id
+docker exec -it <container_id> bash
+
+#or use the below command to get the id for the corresponding image
+docker ps -a
+
+#Then run the docker exec command which is mentioned above
+```
+
