@@ -33,7 +33,7 @@ pipeline {
                 script {
                     script {
                         // Using Docker command to build the image
-                        bat 'docker build -t "${image_name}" .'
+                        bat 'docker build -t $image_name .'
                         bat 'docker ps -a'
                         }
                 }
