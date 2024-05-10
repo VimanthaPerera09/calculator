@@ -51,6 +51,7 @@ use the following commands to run the container and program
 
 ### Run in interactive mode
 ```bash
+#This will directly run the calculator program
 docker run -it <image_name>
 ```
 
@@ -59,10 +60,10 @@ docker run -it <image_name>
 #Run container in background
 docker run -d -t <image_name>
 
-#get the output of the above command which is the container id
+#Get the output of the above command which is the container id
 docker exec -it <container_id> bash
 
-#or use the below command to get the id for the corresponding image
+#Or use the below command to get the id for the corresponding image
 docker ps -a
 
 #Then run the docker exec command which is mentioned above
