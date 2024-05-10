@@ -25,15 +25,15 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.calc.divide(8, 0)
 
-    #Failing test case
+    #Fixed test case
     def test_invalid_addition(self):
-        result = self.calc.add(3, '5')
-        self.assertNotEqual(result, 8)
+        with self.assertRaises(TypeError):
+            self.calc.add(3, '5')
     
-    #Failing test case
+    #Fixed test case
     def test_invalid_substractor(self):
-        result = self.calc.subtract(4, '5')
-        self.assertNotEqual(result, -1)   
+        with self.assertRaises(TypeError):
+            self.calc.subtract(4, "5")   
 
 if __name__ == '__main__':
     unittest.main()
