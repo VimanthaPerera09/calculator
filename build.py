@@ -3,6 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 import shutil
+from args import args_for_cal as args
 
 def compile_and_test():
     print("Compiling and testing...")
@@ -64,47 +65,62 @@ def run_executable():
         print("Executable not found. Please build the executable first.")
 
 if __name__ == '__main__':
-    while True:
-        print('''
-        1. Clean-up only
-        2. compile and test only.
-        3. build executable only.
-        4. clean up, compile and test, build executable
-        5. exit
+    if args.jenkins == False:
+        while True:
+            print('''
+            1. Clean-up only
+            2. compile and test only.
+            3. build executable only.
+            4. clean up, compile and test, build executable
+            5. exit
+            
+            ''')
         
-        ''')
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                clean()
+                sys.exit("Cleaned your directory tree!!!")
+            if choice == "2":
+                compile_and_test()
+            if choice == "3":
+                build_executable()
+            if choice == "4":
+                clean()
+                compile_and_test()
+                build_executable()
+            if choice == "5":
+                sys.exit("ByeBye!!")
+            
+            if choice not in ["1", "2", "3", "4", "5"]:
+                sys.exit("Invalid Choice!! Goodday!")
+
+            answer = input("Installation complete, Do you wish to run the program?(yes/No || y/n) ")
+
+            if answer.lower() == "y":
+                print(answer.lower())
+                run_executable()
+                sys.exit("Goodday!!!")
+            if answer.lower() == "yes":
+                run_executable()
+                sys.exit("Goodday!")
+            else:
+                sys.exit("Have a good day, you can run your program at dist/.")
+    else:
+        if args.compile_test and args.build_executable:
+            clean()
+            compile_and_test()
+            build_executable()
+        elif args.clean and args.compile_test:
+            clean()
+            compile_and_test()
+        elif args.clean and args.build_executable:
+            clean()
+            build_executable()
+        elif args.compile_test:
+            compile_and_test()
+        elif args.clean:
+            clean()
+        elif args.build_executable:
     
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-            clean()
-            sys.exit("Cleaned your directory tree!!!")
-        if choice == "2":
-            compile_and_test()
-        if choice == "3":
             build_executable()
-        if choice == "4":
-            clean()
-            compile_and_test()
-            build_executable()
-        if choice == "5":
-            sys.exit("ByeBye!!")
-        
-        if choice not in ["1", "2", "3", "4", "5"]:
-            sys.exit("Invalid Choice!! Goodday!")
-
-        
-        
-
-
-        answer = input("Installation complete, Do you wish to run the program?(yes/No || y/n) ")
-
-        if answer.lower() == "y":
-            print(answer.lower())
-            run_executable()
-            sys.exit("Goodday!!!")
-        if answer.lower() == "yes":
-            run_executable()
-            sys.exit("Goodday!")
-        else:
-            sys.exit("Have a good day, you can run your program at dist/.")

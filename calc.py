@@ -1,3 +1,4 @@
+from args import args_for_cal as args
 class Calculator:
     def __init__(self):
         pass
@@ -29,57 +30,72 @@ class Calculator:
 
 def main():
     calc = Calculator()
+    if args.jenkins == False:
+        while True:
+            # Prompt user for operation
+            print("\nAvailable operations:")
+            print("1. Add (+)")
+            print("2. Subtract (-)")
+            print("3. Multiply (*)")
+            print("4. Divide (/)")
+            print("5. Exit")
 
-    while True:
-        # Prompt user for operation
-        print("\nAvailable operations:")
-        print("1. Add (+)")
-        print("2. Subtract (-)")
-        print("3. Multiply (*)")
-        print("4. Divide (/)")
-        print("5. Exit")
+            choice = input("Enter your choice (1-5): ")
 
-        choice = input("Enter your choice (1-5): ")
+            # Performing chosen operation or exit
+            if choice == "5":
+                print("Exiting...")
+                break
 
-        # Performing chosen operation or exit
-        if choice == "5":
-            print("Exiting...")
-            break
-
-        if choice not in ["1", "2", "3", "4"]:
-            print("Invalid choice. Please enter a valid option (1-5).")
-            continue
-
-        # Prompt user for numbers
-        try:
-            num1 = float(input("Enter the first number: "))
-            num2 = float(input("Enter the second number: "))
-        except ValueError:
-            print("Invalid input. Please enter numeric values.")
-            continue
-
-        # Performing the selected operation
-        if choice == "1":
-            result = calc.add(num1, num2)
-            operation = "Addition"
-        elif choice == "2":
-            result = calc.subtract(num1, num2)
-            operation = "Subtraction"
-        elif choice == "3":
-            result = calc.multiply(num1, num2)
-            operation = "Multiplication"
-        elif choice == "4":
-            try:
-                result = calc.divide(num1, num2)
-                operation = "Division"
-            except ValueError as e:
-                print(f"Error: {e}")
+            if choice not in ["1", "2", "3", "4"]:
+                print("Invalid choice. Please enter a valid option (1-5).")
                 continue
 
-        # Displaying the result
-        print(f"Result of {operation}: {result}")
+            # Prompt user for numbers
+            try:
+                num1 = float(input("Enter the first number: "))
+                num2 = float(input("Enter the second number: "))
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
+                continue
 
-    print("Goodbye!")
+            # Performing the selected operation
+            if choice == "1":
+                result = calc.add(num1, num2)
+                operation = "Addition"
+            elif choice == "2":
+                result = calc.subtract(num1, num2)
+                operation = "Subtraction"
+            elif choice == "3":
+                result = calc.multiply(num1, num2)
+                operation = "Multiplication"
+            elif choice == "4":
+                try:
+                    result = calc.divide(num1, num2)
+                    operation = "Division"
+                except ValueError as e:
+                    print(f"Error: {e}")
+                    continue
+
+            # Displaying the result
+            print(f"Result of {operation}: {result}")
+
+        print("Goodbye!")
+    else:
+        if not args.operation:
+            print("Operation not specified")
+        else:
+            if args.operation == "add":
+                result = calc.add(args.num1, args.num2)
+            elif args.operation == "sub":
+                result = calc.subtract(args.num1, args.num2)
+            elif args.operation == "mul":
+                result = calc.multiply(args.num1, args.num2)
+            elif args.operation == "div":
+                result = calc.divide(args.num1, args.num2)
+        print(f"Result is: {result}")
+
+        print("Operation Completed!! Good bye!!")            
 
 if __name__ == "__main__":
     main()
